@@ -37,7 +37,8 @@ $ubicaciones = [
 $pedido = ["Ensalada César", "Pizza Margarita", "Café", "Gambas"];
 
 // TODO Filtrar platos por disponibilidad, guardando en variable $disponibles
-$disponibles = array_filter($menu, function ($articulo) {
+$disponibles = array_filter($menu, function ($articulo) 
+{
     return $articulo->disponibilidad === true;
 });
 
@@ -49,30 +50,29 @@ $disponibles = array_filter($menu, function ($articulo) {
 function imprimirListaArticulos($articulos)
 {
     foreach ($articulos as $articulo) {
-        echo "<li>" . $articulo->nombre . ". " . $articulo->precio . "</li>\n";
+        echo "<li>" . $articulo->nombre . " -> " . $articulo->precio . "</li>";
     }
 }
 
 // TODO Función para imprimir un pedido
 function imprimirPedido($pedido, $menu)
-{
-    echo "<table border='1'>\n";
-    echo "<tr><th>Artículo</th><th>Precio</th></tr>\n";
+{  //Te añado cellpadding y cellspacing para que se vea mejor :)
+    echo "<table border='1' cellpadding='10' cellspacing='10'>";
+    echo "<tr><th>Artículo</th><th>Precio</th></tr>";
 
     $total = 0;
 
     foreach ($pedido as $nombrePedido) {
         $encontrado = false;
-
-        foreach ($menu as $articulo) {
-            if ($articulo->nombre === $nombrePedido) {
-                $encontrado = true;
+            foreach ($menu as $articulo) {
+                if ($articulo->nombre === $nombrePedido) {
+                    $encontrado = true;
 
                 if ($articulo->disponibilidad) {
-                    echo "<tr><td>" . $articulo->nombre . "</td><td>€" . $articulo->precio . "</td></tr>\n";
+                    echo "<tr><td>" . $articulo->nombre . "</td><td>€ " . $articulo->precio . "</td></tr>";
                     $total += $articulo->precio;
                 } else {
-                    echo "<tr><td>" . $articulo->nombre . "</td><td>No disponible</td></tr>\n";
+                    echo "<tr><td>" . $articulo->nombre . "</td><td>No disponible</td></tr>";
                 }
                 break;
             }
@@ -83,22 +83,22 @@ function imprimirPedido($pedido, $menu)
         }
     }
 
-    echo "<tr><td><strong>Total</strong></td><td><strong>€" . $total . "</strong></td></tr>\n";
-    echo "</table>\n";
+    echo "<tr><td><b>Total</b></td><td><b>€ " . $total . "</b></td></tr>";
+    echo "</table>";
 }
 
 // TODO Función para imprimir las ubicaciones
 function imprimirUbicaciones($ubicaciones)
 {
-    echo "<ul>\n";
+    echo "<ul>";
     foreach ($ubicaciones as $nombre => $datos) {
-        echo "<li><strong>" . $nombre . ":</strong> " .
-            $datos["direccion"] . ". " .
-            "Teléfono: " . $datos["telefono"] . ". " .
+        echo "<li><b>" . $nombre . ":</b> " .
+            $datos["direccion"] . " - " .
+            "Teléfono: " . $datos["telefono"] . " - " .
             "Horario: " . $datos["horario"] .
-            "</li>\n";
+            "</li>";
     }
-    echo "</ul>\n";
+    echo "</ul>";
 }
 
 ?>
