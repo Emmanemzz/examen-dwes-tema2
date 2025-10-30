@@ -56,8 +56,7 @@ function imprimirListaArticulos($articulos)
 
 // TODO Función para imprimir un pedido
 function imprimirPedido($pedido, $menu)
-{  //Te añado cellpadding y cellspacing para que se vea mejor :)
-    echo "<table border='1' cellpadding='10' cellspacing='10'>";
+{   
     echo "<tr><th>Artículo</th><th>Precio</th></tr>";
 
     $total = 0;
@@ -84,13 +83,13 @@ function imprimirPedido($pedido, $menu)
     }
 
     echo "<tr><td><b>Total</b></td><td><b>€ " . $total . "</b></td></tr>";
-    echo "</table>";
+    
 }
 
 // TODO Función para imprimir las ubicaciones
 function imprimirUbicaciones($ubicaciones)
 {
-    echo "<ul>";
+
     foreach ($ubicaciones as $nombre => $datos) {
         echo "<li><b>" . $nombre . ":</b> " .
             $datos["direccion"] . " - " .
@@ -98,7 +97,7 @@ function imprimirUbicaciones($ubicaciones)
             "Horario: " . $datos["horario"] .
             "</li>";
     }
-    echo "</ul>";
+
 }
 
 ?>
@@ -116,10 +115,14 @@ function imprimirUbicaciones($ubicaciones)
 
 
 <h2>Pedido realizado:</h2>
+<table border="1" cellpadding="10" cellspacing="10"> <!--Te añado cellpadding y cellspacing para que se vea mejor :)-->
 <?php
 imprimirPedido($pedido, $menu);
 ?>
+</table>
 
 
 <h2>Ubicaciones de Recogida:</h2>
-<?php imprimirUbicaciones($ubicaciones); ?>
+<ul>
+    <?php imprimirUbicaciones($ubicaciones); ?>
+</ul>
