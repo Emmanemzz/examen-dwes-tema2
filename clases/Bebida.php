@@ -2,18 +2,11 @@
 // Clase Bebida que hereda de Artículo
 class Bebida extends Articulo{
     public $size;
+    public $temperatura;
 
-    public function __construct($nombre, $precio,$disponibilidad,$categoria,$size){
+    public function __construct($nombre, $precio,$disponibilidad,$categoria,$size,$temperatura){
         parent::__construct($nombre,$precio,$disponibilidad,$categoria);
         $this->size=$size;
-    }
-
-    public function getSize(){
-        return $this->size;
-    }
-
-    public function setSize($size){
-        $this->size=$size;
-        return $this;
+        $this->temperatura=$temperatura;
     }
 }
